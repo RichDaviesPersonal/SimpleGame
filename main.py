@@ -31,13 +31,13 @@ print ('Your name is ' + name + ' and your type is ' + type)
 
 c = CharacterManagement()
 b = battle()
-playerhp, armourclass = c.CreateACharacter(name, type)
+playerhp, armourclass, weapon = c.CreateACharacter(name, type)
 d=diceroll()
 
-beasthp = 0
+beasthp = 10
 beastweapon = d.rolladice(6)
 beastarmourclass = 13
-playerweapon = 5
+playerweapon = weapon[1]
 print('you walk into the room and are attacked by a beast with a weapon of +' + str(beastweapon))
 print('ROLL FOR INITIATIVE!!!')
 input('\nPress the enter key to continue.\n')
@@ -47,11 +47,13 @@ beastroll=d.rolladice(1)
 print('Beast has rolled a ' + str(beastroll))
 if playerroll > beastroll:
     print(name + ' attacks first')
+    input('\nPress the enter key to continue.\n')
     damage = b.attack(beastarmourclass,name,'beast',playerweapon)
     beasthp -= int(damage)
     input('\nPress the enter key to continue.\n')
 else:
     print('Beast attacks first')
+    input('\nPress the enter key to continue.\n')
 while playerhp > 0 and beasthp > 0:
     damage = b.attack(armourclass,'Beast',name,beastweapon)
     playerhp -= int(damage)
@@ -62,7 +64,9 @@ while playerhp > 0 and beasthp > 0:
 nextstep='you continue on, well done' if playerhp >0 else 'Game Over'
 print (nextstep)
 a = additionalmaps
-print ('are you ready for ' + a.map1)
+print ('Which Direction do you want to head next?')
+for key, value in a.map1.items():
+    print (key, value)
 
 
 
