@@ -43,7 +43,7 @@ print('ROLL FOR INITIATIVE!!!')
 input('\nPress the enter key to continue.\n')
 playerroll=d.rolladice(20)
 print(name + ' has rolled a ' + str(playerroll))
-beastroll=d.rolladice(1)
+beastroll=d.rolladice(20)
 print('Beast has rolled a ' + str(beastroll))
 if playerroll > beastroll:
     print(name + ' attacks first')
